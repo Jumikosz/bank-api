@@ -1,37 +1,54 @@
 package com.api.banklineapi.model;
 
-public class Correntista {
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import javax.persistence.Id;
 
-		private Integer id;
-		private String cpf;
-		private String nome;
-		
-		private Conta conta;
-		
-		public Conta getConta() {
-			return conta;
-		}
-		public void setConta(Conta conta) {
-			this.conta = conta;
-		}
-		public Integer getId() {
-			return id;
-		}
-		public void setId(Integer id) {
-			this.id = id;
-		}
-		public String getCpf() {
-			return cpf;
-		}
-		public void setCpf(String cpf) {
-			this.cpf = cpf;
-		}
-		public String getNome() {
-			return nome;
-		}
-		public void setNome(String nome) {
-			this.nome = nome;
-		}
-		
+@Entity
+@Table(name = "tab_correntista")
+public class Correntista {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@Column (length = 20)
+	private String cpf;
+	
+	@Column (length = 60)
+	private String nome;
+	
+	@Embedded
+	private Conta conta;
+	
+	public Conta getConta() {
+		return conta;
+	}
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
 		
 }
